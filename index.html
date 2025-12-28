@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rizzo Flow</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23191414%22 /><path d=%22M25 50 L45 70 L75 30%22 stroke=%22%23FF4632%22 stroke-width=%2212%22 fill=%22none%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 /></svg>">
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h2>Minhas Tarefas</h2>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <p id="progress-text">0% Concluído</p>
+        </div>
+        
+        <div class="input-area">
+            <div class="input-row-main">
+                <input type="text" id="input-box" placeholder="O que precisa ser feito?">
+            </div>
+            
+            <div class="input-row-details">
+                <select id="category-select">
+                    <option value="Pessoal">Pessoal</option>
+                    <option value="Trabalho">Trabalho</option>
+                    <option value="Estudo">Estudo</option>
+                    <option value="Lazer">Lazer</option>
+                </select>
+
+                <input type="date" id="deadline-input">
+                
+                <button onclick="addTask()">Adicionar</button>
+            </div>
+        </div>
+
+        <ul id="list-container">
+        </ul>
+
+        <div class="filters">
+            <span class="active" onclick="filterTasks('all')" id="filter-all">Todas</span>
+            <span onclick="filterTasks('pending')" id="filter-pending">Pendentes</span>
+            <span onclick="filterTasks('completed')" id="filter-completed">Concluídas</span>
+        </div>
+
+        <div class="backup-area">
+            <button class="btn-backup" onclick="exportTasks()">⬇ Baixar Backup (.txt)</button>
+            <input type="file" id="import-file" accept=".txt" style="display: none;" onchange="importTasks(this)">
+            <button class="btn-backup" onclick="document.getElementById('import-file').click()">⬆ Restaurar Backup</button>
+        </div>
+
+        <div class="footer">
+            Desenvolvido por <span class="author">joaorizzo0112</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,354 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    background-color: #000000;
+    background-image: 
+        radial-gradient(circle at 10% 10%, rgba(65, 0, 245, 0.4) 0%, transparent 40%),
+        radial-gradient(circle at 90% 90%, rgba(255, 70, 50, 0.3) 0%, transparent 40%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background: #191414;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px;
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid #333;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+}
+
+.header h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+    background: linear-gradient(to right, #4100F5, #F037A5, #FF4632, #CDF564);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 800;
+}
+
+.progress-container {
+    width: 100%;
+    height: 8px;
+    background: #333;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #4100F5, #FF4632);
+    transition: width 0.4s ease;
+    box-shadow: 0 0 10px rgba(240, 55, 165, 0.7);
+}
+
+.progress-bar.victory {
+    background: linear-gradient(90deg, #CDF564, #4100F5, #F037A5, #FF4632);
+    background-size: 300% 100%;
+    animation: rainbow 2s infinite linear;
+}
+
+@keyframes rainbow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+#progress-text {
+    font-size: 12px;
+    color: #888;
+    text-align: right;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+#progress-text.victory {
+    color: #CDF564;
+    font-weight: bold;
+}
+
+.input-area {
+    background: #222;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    border: 1px solid #333;
+}
+
+.input-row-main input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    color: #FFF;
+    outline: none;
+    margin-bottom: 15px;
+    padding: 5px 0;
+    border-bottom: 1px solid #444;
+}
+
+.input-row-main input::placeholder {
+    color: #666;
+}
+
+.input-row-details {
+    display: flex;
+    gap: 10px;
+}
+
+select, input[type="date"], button {
+    flex: 1;
+    height: 40px;
+    background: #333;
+    border: none;
+    color: #fff;
+    padding: 0 10px;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color-scheme: dark;
+}
+
+button {
+    background: linear-gradient(90deg, #FF4632, #F037A5);
+    font-weight: bold;
+    color: #000;
+    transition: 0.3s;
+}
+
+button:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+}
+
+ul {
+    margin-bottom: 20px;
+    padding: 0;
+    min-height: 50px;
+}
+
+ul li {
+    list-style: none;
+    background: #222;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-left: 4px solid transparent;
+    transition: 0.3s;
+}
+
+ul li:hover {
+    background: #2a2a2a;
+}
+
+.badge {
+    display: inline-block;
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-right: 8px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #fff;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+.cat-pessoal { background: #4100F5; }
+.cat-trabalho { background: #FF4632; }
+.cat-estudo { background: #F037A5; }
+.cat-lazer { background: #CDF564; color: #000; }
+
+.task-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.task-text {
+    font-size: 16px;
+    color: #e0e0e0;
+    word-break: break-word;
+    line-height: 1.4;
+}
+
+.task-date {
+    font-size: 12px;
+    color: #888;
+    margin-top: 2px;
+}
+
+.task-date.late {
+    color: #FF4632;
+    font-weight: bold;
+}
+
+.icon-check {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #555;
+    border-radius: 50%;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+ul li.checked {
+    background: #1a1a1a;
+    border-left: 4px solid #CDF564;
+    opacity: 0.8;
+}
+
+ul li.checked .icon-check {
+    background: #CDF564;
+    border-color: #CDF564;
+    box-shadow: 0 0 8px #CDF564;
+}
+
+ul li.checked .task-text {
+    text-decoration: line-through;
+    color: #666;
+}
+
+ul li.checked .badge {
+    opacity: 0.5;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.actions span {
+    font-size: 18px;
+    color: #666;
+    cursor: pointer;
+    transition: 0.2s;
+    line-height: 1;
+}
+
+.actions span:hover {
+    color: #FF4632;
+}
+
+.empty-state {
+    text-align: center;
+    color: #555;
+    padding: 20px;
+    animation: fadeIn 0.5s;
+}
+
+.empty-state span {
+    font-size: 40px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.filters {
+    display: flex;
+    width: 100%;
+    margin-top: 15px;
+    border-top: 1px solid #333;
+    padding-top: 20px;
+}
+
+.filters span {
+    flex: 1;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: #666;
+    padding-bottom: 8px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.filters span:hover {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 5px 5px 0 0;
+}
+
+.filters span.active {
+    color: #FF4632;
+    font-weight: bold;
+    border-bottom: 2px solid #FF4632;
+}
+
+.backup-area {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.btn-backup {
+    background: #333;
+    color: #aaa;
+    font-size: 13px;
+    padding: 0 15px;
+    height: 35px;
+    border-radius: 5px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-backup:hover {
+    background: #444;
+    color: #fff;
+}
+
+.footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+}
+
+.footer .author {
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.footer .author:hover {
+    color: #CDF564;
+    text-shadow: 0 0 10px rgba(205, 245, 100, 0.5);
+}
