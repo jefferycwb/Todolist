@@ -30,7 +30,7 @@ function addTask() {
     const date = deadlineInput.value;
 
     if (text === '') {
-        alert("Por favor, digite uma tarefa!");
+        alert("豪稍奈想做特额事体落笔");
         return;
     }
 
@@ -53,7 +53,7 @@ function toggleTask(index) {
 
 function deleteTask(index, event) {
     event.stopPropagation();
-    if(confirm("Deseja realmente apagar esta tarefa?")) {
+    if(confirm("格章事体真额做特了伐?")) {
         tasks.splice(index, 1);
         saveLocal();
     }
@@ -61,7 +61,7 @@ function deleteTask(index, event) {
 
 function editTask(index, event) {
     event.stopPropagation();
-    const newText = prompt("Editar tarefa:", tasks[index].text);
+    const newText = prompt("改一记:", tasks[index].text);
     if (newText !== null && newText.trim() !== "") {
         tasks[index].text = newText.trim();
         saveLocal();
@@ -71,7 +71,7 @@ function editTask(index, event) {
 function formatDate(dateString) {
     if (!dateString) return "";
     const date = new Date(dateString + 'T00:00:00');
-    return date.toLocaleDateString('pt-BR');
+    return date.toLocaleDateString('chs-CN');
 }
 
 function isLate(dateString, isCompleted) {
@@ -99,7 +99,7 @@ function renderTasks() {
         if (!task.category) task.category = "Pessoal";
 
         const lateClass = isLate(task.deadline, task.completed) ? "late" : "";
-        const lateText = lateClass ? "(ATRASADA!)" : "";
+        const lateText = lateClass ? "(摸鬼!)" : "";
         const displayDate = task.deadline ? `📅 ${formatDate(task.deadline)} ${lateText}` : "";
 
         const li = document.createElement("li");
@@ -129,8 +129,8 @@ function renderTasks() {
         listContainer.innerHTML = `
             <div class="empty-state">
                 <span>🎉</span>
-                <p>Tudo limpo por aqui!</p>
-                <small>Aproveite seu tempo livre.</small>
+                <p>奈啦啦嘻嘻弄清爽!</p>
+                <small>格记酷伊做莽了.</small>
             </div>
         `;
     }
@@ -139,7 +139,7 @@ function renderTasks() {
 function updateProgress() {
     if (tasks.length === 0) {
         progressBar.style.width = "0%";
-        progressText.innerText = "0% Concluído";
+        progressText.innerText = "0% 做特了";
         progressBar.classList.remove("victory");
         progressText.classList.remove("victory");
         return;
@@ -154,7 +154,7 @@ function updateProgress() {
     if (percent === 100) {
         progressBar.classList.add("victory");
         progressText.classList.add("victory");
-        progressText.innerText = "100% Concluído - Parabéns! 🎉";
+        progressText.innerText = "100% 做特 - 截棍! 🎉";
     } else {
         progressBar.classList.remove("victory");
         progressText.classList.remove("victory");
@@ -186,16 +186,16 @@ function importTasks(input) {
         try {
             const imported = JSON.parse(e.target.result);
             if(Array.isArray(imported)) {
-                if(confirm("Substituir lista atual pelo backup?")) {
+                if(confirm("调成backup?")) {
                     tasks = imported;
                     saveLocal();
-                    alert("Restaurado com sucesso!");
+                    alert("恢复了!");
                 }
             } else {
-                alert("Arquivo inválido.");
+                alert("格文集无效");
             }
         } catch (err) {
-            alert("Erro ao ler o arquivo.");
+            alert("读写错误.");
         }
     };
     reader.readAsText(file);
